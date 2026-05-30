@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.model.dto.post;
+package com.smartstockpicture.model.dto.post;
 
 import java.io.Serializable;
 import java.util.List;

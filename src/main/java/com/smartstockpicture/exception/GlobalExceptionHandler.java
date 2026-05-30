@@ -1,8 +1,8 @@
-package com.yupi.springbootinit.exception;
+package com.smartstockpicture.exception;
 
-import com.yupi.springbootinit.common.BaseResponse;
-import com.yupi.springbootinit.common.ErrorCode;
-import com.yupi.springbootinit.common.ResultUtils;
+import com.smartstockpicture.common.BaseResponse;
+import com.smartstockpicture.common.ErrorCode;
+import com.smartstockpicture.common.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

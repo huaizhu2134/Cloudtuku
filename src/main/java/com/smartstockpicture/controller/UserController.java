@@ -1,25 +1,25 @@
-package com.yupi.springbootinit.controller;
+package com.smartstockpicture.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yupi.springbootinit.annotation.AuthCheck;
-import com.yupi.springbootinit.common.BaseResponse;
-import com.yupi.springbootinit.common.DeleteRequest;
-import com.yupi.springbootinit.common.ErrorCode;
-import com.yupi.springbootinit.common.ResultUtils;
-import com.yupi.springbootinit.config.WxOpenConfig;
-import com.yupi.springbootinit.constant.UserConstant;
-import com.yupi.springbootinit.exception.BusinessException;
-import com.yupi.springbootinit.exception.ThrowUtils;
-import com.yupi.springbootinit.model.dto.user.UserAddRequest;
-import com.yupi.springbootinit.model.dto.user.UserLoginRequest;
-import com.yupi.springbootinit.model.dto.user.UserQueryRequest;
-import com.yupi.springbootinit.model.dto.user.UserRegisterRequest;
-import com.yupi.springbootinit.model.dto.user.UserUpdateMyRequest;
-import com.yupi.springbootinit.model.dto.user.UserUpdateRequest;
-import com.yupi.springbootinit.model.entity.User;
-import com.yupi.springbootinit.model.vo.LoginUserVO;
-import com.yupi.springbootinit.model.vo.UserVO;
-import com.yupi.springbootinit.service.UserService;
+import com.smartstockpicture.annotation.AuthCheck;
+import com.smartstockpicture.common.BaseResponse;
+import com.smartstockpicture.common.DeleteRequest;
+import com.smartstockpicture.common.ErrorCode;
+import com.smartstockpicture.common.ResultUtils;
+import com.smartstockpicture.config.WxOpenConfig;
+import com.smartstockpicture.constant.UserConstant;
+import com.smartstockpicture.exception.BusinessException;
+import com.smartstockpicture.exception.ThrowUtils;
+import com.smartstockpicture.model.dto.user.UserAddRequest;
+import com.smartstockpicture.model.dto.user.UserLoginRequest;
+import com.smartstockpicture.model.dto.user.UserQueryRequest;
+import com.smartstockpicture.model.dto.user.UserRegisterRequest;
+import com.smartstockpicture.model.dto.user.UserUpdateMyRequest;
+import com.smartstockpicture.model.dto.user.UserUpdateRequest;
+import com.smartstockpicture.model.entity.User;
+import com.smartstockpicture.model.vo.LoginUserVO;
+import com.smartstockpicture.model.vo.UserVO;
+import com.smartstockpicture.service.UserService;
 
 import java.util.List;
 import javax.annotation.Resource;
@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.yupi.springbootinit.service.impl.UserServiceImpl.SALT;
+import static com.smartstockpicture.service.impl.UserServiceImpl.SALT;
 
 /**
  * 用户接口

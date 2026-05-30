@@ -1,6 +1,6 @@
-package com.yupi.springbootinit.controller;
+package com.smartstockpicture.controller;
 
-import com.yupi.springbootinit.wxmp.WxMpConstant;
+import com.smartstockpicture.wxmp.WxMpConstant;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;

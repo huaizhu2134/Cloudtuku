@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.constant;
+package com.smartstockpicture.constant;
 
 /**
  * 通用常量

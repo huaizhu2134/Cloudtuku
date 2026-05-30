@@ -1,8 +1,8 @@
-package com.yupi.springbootinit.service;
+package com.smartstockpicture.service;
 
-import com.yupi.springbootinit.model.entity.PostThumb;
+import com.smartstockpicture.model.entity.PostThumb;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yupi.springbootinit.model.entity.User;
+import com.smartstockpicture.model.entity.User;
 
 /**
  * 帖子点赞服务

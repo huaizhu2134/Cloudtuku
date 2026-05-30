@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.aop;
+package com.smartstockpicture.aop;
 
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.generate;
+package com.smartstockpicture.generate;
 
 import cn.hutool.core.io.FileUtil;
 import freemarker.template.Configuration;

@@ -1,6 +1,6 @@
-package com.yupi.springbootinit.common;
+package com.smartstockpicture.common;
 
-import com.yupi.springbootinit.constant.CommonConstant;
+import com.smartstockpicture.constant.CommonConstant;
 import lombok.Data;
 
 /**

@@ -1,13 +1,13 @@
-package com.yupi.springbootinit.controller;
+package com.smartstockpicture.controller;
 
-import com.yupi.springbootinit.common.BaseResponse;
-import com.yupi.springbootinit.common.ErrorCode;
-import com.yupi.springbootinit.common.ResultUtils;
-import com.yupi.springbootinit.exception.BusinessException;
-import com.yupi.springbootinit.model.dto.postthumb.PostThumbAddRequest;
-import com.yupi.springbootinit.model.entity.User;
-import com.yupi.springbootinit.service.PostThumbService;
-import com.yupi.springbootinit.service.UserService;
+import com.smartstockpicture.common.BaseResponse;
+import com.smartstockpicture.common.ErrorCode;
+import com.smartstockpicture.common.ResultUtils;
+import com.smartstockpicture.exception.BusinessException;
+import com.smartstockpicture.model.dto.postthumb.PostThumbAddRequest;
+import com.smartstockpicture.model.entity.User;
+import com.smartstockpicture.service.PostThumbService;
+import com.smartstockpicture.service.UserService;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;

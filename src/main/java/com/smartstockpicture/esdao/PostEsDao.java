@@ -1,6 +1,6 @@
-package com.yupi.springbootinit.esdao;
+package com.smartstockpicture.esdao;
 
-import com.yupi.springbootinit.model.dto.post.PostEsDTO;
+import com.smartstockpicture.model.dto.post.PostEsDTO;
 import java.util.List;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 

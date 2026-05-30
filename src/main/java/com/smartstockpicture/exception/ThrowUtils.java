@@ -1,6 +1,6 @@
-package com.yupi.springbootinit.exception;
+package com.smartstockpicture.exception;
 
-import com.yupi.springbootinit.common.ErrorCode;
+import com.smartstockpicture.common.ErrorCode;
 
 /**
  * 抛异常工具类

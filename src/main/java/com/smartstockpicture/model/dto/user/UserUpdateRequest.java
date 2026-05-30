@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.model.dto.user;
+package com.smartstockpicture.model.dto.user;
 
 import java.io.Serializable;
 import lombok.Data;

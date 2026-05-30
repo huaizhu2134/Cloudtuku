@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.model.dto.file;
+package com.smartstockpicture.model.dto.file;
 
 import java.io.Serializable;
 import lombok.Data;

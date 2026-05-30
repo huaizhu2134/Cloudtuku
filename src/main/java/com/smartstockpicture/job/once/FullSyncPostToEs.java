@@ -1,9 +1,9 @@
-package com.yupi.springbootinit.job.once;
+package com.smartstockpicture.job.once;
 
-import com.yupi.springbootinit.esdao.PostEsDao;
-import com.yupi.springbootinit.model.dto.post.PostEsDTO;
-import com.yupi.springbootinit.model.entity.Post;
-import com.yupi.springbootinit.service.PostService;
+import com.smartstockpicture.esdao.PostEsDao;
+import com.smartstockpicture.model.dto.post.PostEsDTO;
+import com.smartstockpicture.model.entity.Post;
+import com.smartstockpicture.service.PostService;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;

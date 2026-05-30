@@ -1,18 +1,18 @@
-package com.yupi.springbootinit.service.impl;
+package com.smartstockpicture.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yupi.springbootinit.common.ErrorCode;
-import com.yupi.springbootinit.exception.BusinessException;
-import com.yupi.springbootinit.mapper.PostFavourMapper;
-import com.yupi.springbootinit.model.entity.Post;
-import com.yupi.springbootinit.model.entity.PostFavour;
-import com.yupi.springbootinit.model.entity.User;
-import com.yupi.springbootinit.service.PostFavourService;
-import com.yupi.springbootinit.service.PostService;
+import com.smartstockpicture.common.ErrorCode;
+import com.smartstockpicture.exception.BusinessException;
+import com.smartstockpicture.mapper.PostFavourMapper;
+import com.smartstockpicture.model.entity.Post;
+import com.smartstockpicture.model.entity.PostFavour;
+import com.smartstockpicture.model.entity.User;
+import com.smartstockpicture.service.PostFavourService;
+import com.smartstockpicture.service.PostService;
 import javax.annotation.Resource;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;

@@ -1,16 +1,16 @@
-package com.yupi.springbootinit.controller;
+package com.smartstockpicture.controller;
 
 import cn.hutool.core.io.FileUtil;
-import com.yupi.springbootinit.common.BaseResponse;
-import com.yupi.springbootinit.common.ErrorCode;
-import com.yupi.springbootinit.common.ResultUtils;
-import com.yupi.springbootinit.constant.FileConstant;
-import com.yupi.springbootinit.exception.BusinessException;
-import com.yupi.springbootinit.manager.CosManager;
-import com.yupi.springbootinit.model.dto.file.UploadFileRequest;
-import com.yupi.springbootinit.model.entity.User;
-import com.yupi.springbootinit.model.enums.FileUploadBizEnum;
-import com.yupi.springbootinit.service.UserService;
+import com.smartstockpicture.common.BaseResponse;
+import com.smartstockpicture.common.ErrorCode;
+import com.smartstockpicture.common.ResultUtils;
+import com.smartstockpicture.constant.FileConstant;
+import com.smartstockpicture.exception.BusinessException;
+import com.smartstockpicture.manager.CosManager;
+import com.smartstockpicture.model.dto.file.UploadFileRequest;
+import com.smartstockpicture.model.entity.User;
+import com.smartstockpicture.model.enums.FileUploadBizEnum;
+import com.smartstockpicture.service.UserService;
 import java.io.File;
 import java.util.Arrays;
 import javax.annotation.Resource;

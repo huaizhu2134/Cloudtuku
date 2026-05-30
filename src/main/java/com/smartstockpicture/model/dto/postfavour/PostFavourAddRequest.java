@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.model.dto.postfavour;
+package com.smartstockpicture.model.dto.postfavour;
 
 import java.io.Serializable;
 import lombok.Data;

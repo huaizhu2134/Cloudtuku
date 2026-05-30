@@ -1,11 +1,11 @@
-package com.yupi.springbootinit.service;
+package com.smartstockpicture.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yupi.springbootinit.model.dto.user.UserQueryRequest;
-import com.yupi.springbootinit.model.entity.User;
-import com.yupi.springbootinit.model.vo.LoginUserVO;
-import com.yupi.springbootinit.model.vo.UserVO;
+import com.smartstockpicture.model.dto.user.UserQueryRequest;
+import com.smartstockpicture.model.entity.User;
+import com.smartstockpicture.model.vo.LoginUserVO;
+import com.smartstockpicture.model.vo.UserVO;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;

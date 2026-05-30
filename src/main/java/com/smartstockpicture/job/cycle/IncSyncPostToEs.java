@@ -1,9 +1,9 @@
-package com.yupi.springbootinit.job.cycle;
+package com.smartstockpicture.job.cycle;
 
-import com.yupi.springbootinit.esdao.PostEsDao;
-import com.yupi.springbootinit.mapper.PostMapper;
-import com.yupi.springbootinit.model.dto.post.PostEsDTO;
-import com.yupi.springbootinit.model.entity.Post;
+import com.smartstockpicture.esdao.PostEsDao;
+import com.smartstockpicture.mapper.PostMapper;
+import com.smartstockpicture.model.dto.post.PostEsDTO;
+import com.smartstockpicture.model.entity.Post;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;

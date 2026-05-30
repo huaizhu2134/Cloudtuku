@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.config;
+package com.smartstockpicture.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

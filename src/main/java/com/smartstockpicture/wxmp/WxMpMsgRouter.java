@@ -1,8 +1,8 @@
-package com.yupi.springbootinit.wxmp;
+package com.smartstockpicture.wxmp;
 
-import com.yupi.springbootinit.wxmp.handler.EventHandler;
-import com.yupi.springbootinit.wxmp.handler.MessageHandler;
-import com.yupi.springbootinit.wxmp.handler.SubscribeHandler;
+import com.smartstockpicture.wxmp.handler.EventHandler;
+import com.smartstockpicture.wxmp.handler.MessageHandler;
+import com.smartstockpicture.wxmp.handler.SubscribeHandler;
 import javax.annotation.Resource;
 import me.chanjar.weixin.common.api.WxConsts.EventType;
 import me.chanjar.weixin.common.api.WxConsts.XmlMsgType;

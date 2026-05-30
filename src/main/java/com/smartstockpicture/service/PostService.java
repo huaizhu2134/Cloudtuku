@@ -1,11 +1,11 @@
-package com.yupi.springbootinit.service;
+package com.smartstockpicture.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yupi.springbootinit.model.dto.post.PostQueryRequest;
-import com.yupi.springbootinit.model.entity.Post;
-import com.yupi.springbootinit.model.vo.PostVO;
+import com.smartstockpicture.model.dto.post.PostQueryRequest;
+import com.smartstockpicture.model.entity.Post;
+import com.smartstockpicture.model.vo.PostVO;
 import javax.servlet.http.HttpServletRequest;
 
 /**

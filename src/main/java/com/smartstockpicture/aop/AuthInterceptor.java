@@ -1,11 +1,11 @@
-package com.yupi.springbootinit.aop;
+package com.smartstockpicture.aop;
 
-import com.yupi.springbootinit.annotation.AuthCheck;
-import com.yupi.springbootinit.common.ErrorCode;
-import com.yupi.springbootinit.exception.BusinessException;
-import com.yupi.springbootinit.model.entity.User;
-import com.yupi.springbootinit.model.enums.UserRoleEnum;
-import com.yupi.springbootinit.service.UserService;
+import com.smartstockpicture.annotation.AuthCheck;
+import com.smartstockpicture.common.ErrorCode;
+import com.smartstockpicture.exception.BusinessException;
+import com.smartstockpicture.model.entity.User;
+import com.smartstockpicture.model.enums.UserRoleEnum;
+import com.smartstockpicture.service.UserService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

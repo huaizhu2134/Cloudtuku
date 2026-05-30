@@ -1,7 +1,7 @@
-package com.yupi.springbootinit.model.vo;
+package com.smartstockpicture.model.vo;
 
 import cn.hutool.json.JSONUtil;
-import com.yupi.springbootinit.model.entity.Post;
+import com.smartstockpicture.model.entity.Post;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

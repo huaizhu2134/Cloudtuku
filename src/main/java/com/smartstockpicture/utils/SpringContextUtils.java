@@ -1,4 +1,4 @@
-package com.yupi.springbootinit.utils;
+package com.smartstockpicture.utils;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
