@@ -7,13 +7,13 @@ import ${packageName}.model.dto.${dataKey}.${upperDataKey}QueryRequest;
 import ${packageName}.model.entity.${upperDataKey};
 import ${packageName}.model.vo.${upperDataKey}VO;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * ${dataName}服务
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
+ * 
+ * 
  */
 public interface ${upperDataKey}Service extends IService<${upperDataKey}> {
 

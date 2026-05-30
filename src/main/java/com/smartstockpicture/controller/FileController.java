@@ -4,17 +4,17 @@ import cn.hutool.core.io.FileUtil;
 import com.smartstockpicture.common.BaseResponse;
 import com.smartstockpicture.common.ErrorCode;
 import com.smartstockpicture.common.ResultUtils;
-import com.smartstockpicture.constant.FileConstant;
+import com.smartstockpicture.config.OssClientConfig;
 import com.smartstockpicture.exception.BusinessException;
-import com.smartstockpicture.manager.CosManager;
+import com.smartstockpicture.manager.OssManager;
 import com.smartstockpicture.model.dto.file.UploadFileRequest;
 import com.smartstockpicture.model.entity.User;
 import com.smartstockpicture.model.enums.FileUploadBizEnum;
 import com.smartstockpicture.service.UserService;
 import java.io.File;
 import java.util.Arrays;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 文件接口
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
+ * @author
+ * 
  */
 @RestController
 @RequestMapping("/file")
@@ -38,7 +38,10 @@ public class FileController {
     private UserService userService;
 
     @Resource
-    private CosManager cosManager;
+    private OssManager ossManager;
+
+    @Resource
+    private OssClientConfig ossClientConfig;
 
     /**
      * 文件上传
@@ -67,9 +70,9 @@ public class FileController {
             // 上传文件
             file = File.createTempFile(filepath, null);
             multipartFile.transferTo(file);
-            cosManager.putObject(filepath, file);
+            ossManager.putObject(filepath, file);
             // 返回可访问地址
-            return ResultUtils.success(FileConstant.COS_HOST + filepath);
+            return ResultUtils.success("https://" + ossClientConfig.getBucketName() + "." + ossClientConfig.getEndpoint() + "/" + filepath);
         } catch (Exception e) {
             log.error("file upload error, filepath = " + filepath, e);
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "上传失败");
