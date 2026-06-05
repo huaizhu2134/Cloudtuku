@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.smartstockpicture</groupId>
-    <artifactId>springboot</artifactId>
+    <artifactId>Cloudtuku</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot</name>
     <properties>
@@ -122,6 +122,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 

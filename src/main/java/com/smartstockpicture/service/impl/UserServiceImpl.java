@@ -40,7 +40,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     /**
      * 盐值，混淆密码
      */
-    public static final String SALT = "yupi";
+    public static final String SALT = "dongfanghuaizhu";
 
     @Override
     public long userRegister(String userAccount, String userPassword, String checkPassword) {
@@ -268,5 +268,94 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         queryWrapper.orderBy(SqlUtils.validSortField(sortField), sortOrder.equals(CommonConstant.SORT_ORDER_ASC),
                 sortField);
         return queryWrapper;
+    }
+
+    @Override
+    public LoginUserVO userLoginWithCaptcha(String userAccount, String userPassword, String captcha,
+                                            String captchaKey, Boolean rememberMe, HttpServletRequest request) {
+        // 1. 校验参数
+        if (StringUtils.isAnyBlank(userAccount, userPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
+        }
+        if (userAccount.length() < 4) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "账号错误");
+        }
+        if (userPassword.length() < 8) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "密码错误");
+        }
+
+        // 2. 验证验证码（TODO: 实际项目中需要从Redis或其他存储中获取验证码进行验证）
+        // String storedCaptcha = getCaptchaFromStorage(captchaKey);
+        // if (storedCaptcha == null || !storedCaptcha.equalsIgnoreCase(captcha)) {
+        //     throw new BusinessException(ErrorCode.PARAMS_ERROR, "验证码错误或已过期");
+        // }
+
+        // 3. 加密并查询用户是否存在
+        String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userAccount", userAccount);
+        queryWrapper.eq("userPassword", encryptPassword);
+        User user = this.baseMapper.selectOne(queryWrapper);
+
+        // 用户不存在或密码错误
+        if (user == null) {
+            log.info("user login failed, userAccount cannot match userPassword");
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在或密码错误");
+        }
+
+        // 4. 检查用户角色
+        if (UserRoleEnum.BAN.getValue().equals(user.getUserRole())) {
+            throw new BusinessException(ErrorCode.FORBIDDEN_ERROR, "该用户已被封，禁止登录");
+        }
+
+        // 5. 记录用户的登录态
+        request.getSession().setAttribute(USER_LOGIN_STATE, user);
+
+        // 6. 如果选择"记住我"，设置session过期时间
+        if (rememberMe != null && rememberMe) {
+            request.getSession().setMaxInactiveInterval(7 * 24 * 60 * 60); // 7天
+        }
+
+        log.info("user login success, userAccount: {}", userAccount);
+        return this.getLoginUserVO(user);
+    }
+
+    @Override
+    public boolean updatePassword(User loginUser, String oldPassword, String newPassword, String checkPassword) {
+        // 1. 校验参数
+        if (StringUtils.isAnyBlank(oldPassword, newPassword, checkPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
+        }
+        if (newPassword.length() < 8) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "新密码长度不能少于8位");
+        }
+        if (!newPassword.equals(checkPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "两次输入的密码不一致");
+        }
+
+        // 2. 验证旧密码是否正确
+        String encryptedOldPassword = DigestUtils.md5DigestAsHex((SALT + oldPassword).getBytes());
+        if (!encryptedOldPassword.equals(loginUser.getUserPassword())) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "原密码错误");
+        }
+
+        // 3. 新密码不能与旧密码相同
+        if (encryptedOldPassword.equals(DigestUtils.md5DigestAsHex((SALT + newPassword).getBytes()))) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "新密码不能与原密码相同");
+        }
+
+        // 4. 更新密码
+        String encryptedNewPassword = DigestUtils.md5DigestAsHex((SALT + newPassword).getBytes());
+        User updateUser = new User();
+        updateUser.setId(loginUser.getId());
+        updateUser.setUserPassword(encryptedNewPassword);
+
+        boolean result = this.updateById(updateUser);
+        if (result) {
+            log.info("user update password success, userId: {}", loginUser.getId());
+        } else {
+            log.error("user update password failed, userId: {}", loginUser.getId());
+        }
+        return result;
     }
 }

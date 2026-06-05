@@ -12,9 +12,11 @@ import com.smartstockpicture.exception.BusinessException;
 import com.smartstockpicture.exception.ThrowUtils;
 import com.smartstockpicture.model.dto.user.UserAddRequest;
 import com.smartstockpicture.model.dto.user.UserLoginRequest;
+import com.smartstockpicture.model.dto.user.UserLoginWithCaptchaRequest;
 import com.smartstockpicture.model.dto.user.UserQueryRequest;
 import com.smartstockpicture.model.dto.user.UserRegisterRequest;
 import com.smartstockpicture.model.dto.user.UserUpdateMyRequest;
+import com.smartstockpicture.model.dto.user.UserUpdatePasswordRequest;
 import com.smartstockpicture.model.dto.user.UserUpdateRequest;
 import com.smartstockpicture.model.entity.User;
 import com.smartstockpicture.model.vo.LoginUserVO;
@@ -104,6 +106,34 @@ public class UserController {
     }
 
     /**
+     * 用户登录（带验证码和记住我功能）
+     *
+     * @param userLoginWithCaptchaRequest
+     * @param request
+     * @return
+     */
+    @PostMapping("/login/captcha")
+    public BaseResponse<LoginUserVO> userLoginWithCaptcha(@RequestBody UserLoginWithCaptchaRequest userLoginWithCaptchaRequest, 
+                                                          HttpServletRequest request) {
+        if (userLoginWithCaptchaRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        String userAccount = userLoginWithCaptchaRequest.getUserAccount();
+        String userPassword = userLoginWithCaptchaRequest.getUserPassword();
+        String captcha = userLoginWithCaptchaRequest.getCaptcha();
+        String captchaKey = userLoginWithCaptchaRequest.getCaptchaKey();
+        Boolean rememberMe = userLoginWithCaptchaRequest.getRememberMe();
+        
+        if (StringUtils.isAnyBlank(userAccount, userPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "账号或密码不能为空");
+        }
+        
+        LoginUserVO loginUserVO = userService.userLoginWithCaptcha(userAccount, userPassword, captcha, 
+                                                                   captchaKey, rememberMe, request);
+        return ResultUtils.success(loginUserVO);
+    }
+
+    /**
      * 用户登录（微信开放平台）
      */
     @GetMapping("/login/wx_open")
@@ -138,6 +168,33 @@ public class UserController {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         boolean result = userService.userLogout(request);
+        return ResultUtils.success(result);
+    }
+
+    /**
+     * 用户修改密码
+     *
+     * @param updatePasswordRequest
+     * @param request
+     * @return
+     */
+    @PostMapping("/update/password")
+    public BaseResponse<Boolean> updatePassword(@RequestBody UserUpdatePasswordRequest updatePasswordRequest,
+                                                HttpServletRequest request) {
+        if (updatePasswordRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        
+        String oldPassword = updatePasswordRequest.getOldPassword();
+        String newPassword = updatePasswordRequest.getNewPassword();
+        String checkPassword = updatePasswordRequest.getCheckPassword();
+        
+        if (StringUtils.isAnyBlank(oldPassword, newPassword, checkPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
+        }
+        
+        User loginUser = userService.getLoginUser(request);
+        boolean result = userService.updatePassword(loginUser, oldPassword, newPassword, checkPassword);
         return ResultUtils.success(result);
     }
 

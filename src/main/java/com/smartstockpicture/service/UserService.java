@@ -48,6 +48,31 @@ public interface UserService extends IService<User> {
     LoginUserVO userLoginByMpOpen(WxOAuth2UserInfo wxOAuth2UserInfo, HttpServletRequest request);
 
     /**
+     * 用户登录（带验证码和记住我功能）
+     *
+     * @param userAccount  用户账户
+     * @param userPassword 用户密码
+     * @param captcha      验证码
+     * @param captchaKey   验证码key
+     * @param rememberMe   是否记住我
+     * @param request
+     * @return 脱敏后的用户信息
+     */
+    LoginUserVO userLoginWithCaptcha(String userAccount, String userPassword, String captcha, 
+                                     String captchaKey, Boolean rememberMe, HttpServletRequest request);
+
+    /**
+     * 用户修改密码
+     *
+     * @param loginUser    当前登录用户
+     * @param oldPassword  旧密码
+     * @param newPassword  新密码
+     * @param checkPassword 确认密码
+     * @return 是否成功
+     */
+    boolean updatePassword(User loginUser, String oldPassword, String newPassword, String checkPassword);
+
+    /**
      * 获取当前登录用户
      *
      * @param request

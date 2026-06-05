@@ -2,15 +2,12 @@ package com.smartstockpicture.constant;
 
 /**
  * 文件常量
- *
- * @author
- * 
  */
+@SuppressWarnings("unused")
 public interface FileConstant {
 
     /**
-     * 文件访问地址
-     * todo 需替换配置
+     * 本地文件访问路径前缀
      */
-    String FILE_HOST = "http://localhost:8101";
+    String FILE_REQUEST_PATH = "/files";
 }

@@ -14,6 +14,7 @@ import java.io.InputStream;
  * 阿里云 OSS 对象存储操作
  */
 @Component
+@SuppressWarnings("unused")
 public class OssManager {
 
     @Resource
@@ -88,7 +89,28 @@ public class OssManager {
     public String getObjectUrl(String objectName) {
         return String.format("https://%s.%s/%s",
                 ossClientConfig.getBucketName(),
-                ossClientConfig.getEndpoint(),
-                objectName);
+                normalizeEndpoint(ossClientConfig.getEndpoint()),
+                normalizeObjectName(objectName));
+    }
+
+    private String normalizeEndpoint(String endpoint) {
+        if (endpoint == null) {
+            return "";
+        }
+        String normalizedEndpoint = endpoint.trim();
+        if (normalizedEndpoint.startsWith("https://")) {
+            normalizedEndpoint = normalizedEndpoint.substring("https://".length());
+        } else if (normalizedEndpoint.startsWith("http://")) {
+            normalizedEndpoint = normalizedEndpoint.substring("http://".length());
+        }
+        return normalizedEndpoint.endsWith("/") ? normalizedEndpoint.substring(0, normalizedEndpoint.length() - 1)
+                : normalizedEndpoint;
+    }
+
+    private String normalizeObjectName(String objectName) {
+        if (objectName == null) {
+            return "";
+        }
+        return objectName.startsWith("/") ? objectName.substring(1) : objectName;
     }
 }
